@@ -16,3 +16,4 @@ jobs:
         - name: GIve me the repo name printed
           run: |
             echo "Repository name is: https://githib.com/${{ github.repository}}.git"
+# https://githib.com/devopswithcloud/i27-dashboard-b10.git
