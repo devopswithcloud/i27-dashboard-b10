@@ -32,6 +32,7 @@ jobs:
         run: |
           java -version
           echo "JAVA_HOME: $JAVA_HOME"
+<<<<<<< HEAD
 
 # ════════════════════════════════════════════════════════════
 # Notice how much work is needed just to:
@@ -44,3 +45,5 @@ jobs:
 #   → Download failures
 #   → Different OS compatibility
 # ════════════════════════════════════════════════════════════
+=======
+>>>>>>> 31da0b8134c689c02a363cb582a441c7a77bef6e
