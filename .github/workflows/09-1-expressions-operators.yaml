@@ -13,6 +13,7 @@ jobs:
                 echo "ref_name == main : ${{ github.ref_name == 'main' }}"
                 echo "ref_name != main : ${{ github.ref_name != 'main' }}"
                 echo "run_number > 0   : ${{ github.run_number > 0 }}"
+                echo "==============================="
             - name: Logical Operator
               run: |
                 echo "==============================="
@@ -20,4 +21,5 @@ jobs:
                 echo "==============================="
                 echo "push and main : ${{ github.event_name == 'push' && github.ref_name == 'main'}}"
                 echo "push or dispatch : ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch'}}"
-                echo "NOT push :    ${{ !(github.event_name == 'push')}}
+                echo "NOT push :    ${{ !(github.event_name == 'push') }}"
+                echo "==============================="
