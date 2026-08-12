@@ -37,7 +37,8 @@ jobs:
           name: surefire-reports
           path: target/surefire-reports/
           retention-days: 7
-    # ------------------ Job 1: Build and Package  -----------------
+
+    # ------------------ Job 2: Build and Package  -----------------
     build: 
       name: Build and Package
       runs-on: ubuntu-latest
