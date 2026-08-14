@@ -11,6 +11,10 @@ jobs:
       steps:
         - run: |
             echo "Deploying to Dev Environment"
+            echo "==============================="
+            echo "STAGING ENVIRONMENT Variables"
+            echo "STAGING_DB_URL is: ${{ vars.STAGING_DB_URL}}"
+            echo "==============================="
     deploy-staging:
       name: Deploy to Staging
       runs-on: ubuntu-latest
@@ -21,6 +25,11 @@ jobs:
       steps:
         - run: |
             echo "Deploying to Stage Environment"
+            echo "==============================="
+            echo "STAGING ENVIRONMENT Variables"
+            echo "STAGING_DB_URL is: ${{ vars.STAGING_DB_URL}}"
+            echo "==============================="
+
     deploy-production:
       name: Deploy to Production
       runs-on: ubuntu-latest
@@ -31,3 +40,7 @@ jobs:
       steps:
         - run: |
             echo "Deploying to Prod Environment"
+            echo "==============================="
+            echo "Production ENVIRONMENT Variables"
+            echo "STAGING_DB_URL is: ${{ vars.PROD_DB_URL}}"
+            echo "==============================="
