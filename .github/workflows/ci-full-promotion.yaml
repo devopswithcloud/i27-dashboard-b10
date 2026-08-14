@@ -1,0 +1,14 @@
+# ===============================================
+# Write a workflow having dev -> staging > producion pipeline
+# with approval gate on production
+# Environments:
+#   development -> no protection
+#   staging     -> no protection
+#   production  -> requiere reviewers: your github username 
+#                   deployment branches: main only
+# Finally i should be able to have summary
+# development url :
+# stagin url:
+# production url:
+# image tag: commit sha value , in that only 7 characters should be printing    
+# ===============================================
