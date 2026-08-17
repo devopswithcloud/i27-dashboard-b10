@@ -23,6 +23,7 @@ on:
     - 'src/**'
     - 'pom.xml'
     - 'Dockerfile'
+  workflow_dispatch: 
 env: 
     DOCKER_IMAGE_NAME: 'devopswithcloudhub/i27-devops-dashboard'
 jobs:
