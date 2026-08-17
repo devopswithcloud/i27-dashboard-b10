@@ -68,6 +68,12 @@ jobs:
           with: 
             username: ${{ vars.DOCKERHUB_USERNAME}}
             password: ${{ secrets.DOCKERHUB_TOKEN}}
+        - name: List the files and path
+          run: |
+            echo "Current path is "
+            pwd
+            echo "List the files in the current path"
+            ls -la 
         - name: Build Docker Image
           run: |
             echo "------------------ Building Docker Image  ---------------------"
