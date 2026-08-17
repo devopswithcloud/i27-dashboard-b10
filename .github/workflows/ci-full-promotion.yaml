@@ -18,7 +18,7 @@ name: Build , test and Push Docker Image
 on: 
   push: 
     branches: 
-    - main
+    - master
     paths:
     - 'src/**'
     - 'pom.xml'
