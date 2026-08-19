@@ -55,7 +55,7 @@ jobs:
         run: |
             echo "------------------ Creating Docker Image Tag ---------------------"
             echo "value=${{ github.sha}}" >> $GITHUB_OUTPUT
-    #------------------- Job 2:Docker Build and Push -------------------------
+    #------------------- Job 2: Docker Build and Push -------------------------
     docker-build-push:
         name: Docker Build and Push
         runs-on: ubuntu-latest

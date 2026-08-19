@@ -1,0 +1,8 @@
+name: 13-2-With-Composite-Action
+# Same workflow as 13-1-without-custom-actions , but using composite actions
+
+jobs:
+    test: 
+        name: Test
+        runs-on: ubuntu-latest
+
