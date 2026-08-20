@@ -14,7 +14,7 @@
 # image tag: commit sha value , in that only 7 characters should be printing  
 # docker push   
 # ===============================================
-name: Build , test and Push Docker Image
+name: Build , test and Push Docker Image - Custom Action
 on: 
   push: 
     branches: 
