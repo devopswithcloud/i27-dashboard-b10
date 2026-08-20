@@ -64,7 +64,7 @@ jobs:
         - name: Checkout code
           uses: actions/checkout@v3
         - name: Docker Build and Push
-          uses: ./.github/actions/docker-build-push
+          uses: devopswithcloud/i27academy-devops-actions/.github/actions/docker-build-push@main
           with: 
             registry-username: ${{ vars.DOCKERHUB_USERNAME}}
             registry-password: ${{ secrets.DOCKERHUB_TOKEN}}
