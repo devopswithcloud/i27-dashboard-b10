@@ -18,3 +18,5 @@ jobs:
             distribution: temurin
         - name: Running Maven Tests
           run: mvn test
+
+          # some commit
