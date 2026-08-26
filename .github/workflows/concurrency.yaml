@@ -1,7 +1,7 @@
 name: Concurrency Job
 on: 
   push:
-    branches: [ main ]
+    branches: [ master ]
 concurrency: 
     group: ci-${{ github.ref }} ## branch name 
     cancel-in-progress: true
