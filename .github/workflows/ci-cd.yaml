@@ -1,0 +1,51 @@
+
+#===========================================================================================
+# Complete CI/CD workflow for GitHub Actions 
+# For our Dashboard Application
+#
+# Flow:
+# build-test > docker-build-push > deploy-to-dev > deploy-to-staging > deploy-to-prod (approval required) > Summary
+# We want to deploy our dashboard java application as serverless application to GCP Cloud run using GitHub Actions with OIDC authentication.
+# Prerequistes:
+#   GITHUB Secrets
+#           GCP_SERVICE_ACCOUNT                 # from gcp-oidc-setup.sh output
+#           GCP_WORKLOAD_IDENTITY_PROVIDER      # from gcp-oidc-setup.sh output
+#   GITHUB Environments
+#        development    -> no protection rules
+#        staging        -> no protection rules
+#        production     -> required approval from devopsiwthcloud team member
+#   Place the image in Google Artifat Registry 
+#   Deploy the image to CLoud Run (Serverless) using OIDC authentication
+#===========================================================================================
+name: i27Academy Devops Dashboard - CI/CD 
+on: 
+  push: 
+    branches: 
+    - master
+    paths:
+    - 'src/**'
+    - 'pom.xml'
+    - 'Dockerfile'
+  workflow_dispatch: 
+permissions:
+  contents: read
+  id-token: write   # Required for OIDC authentication to GCP
+jobs:
+# ------------------ Job 1:  Build Test and Package ----------------- 
+  build-test:
+        name: Build and Test 
+        runs-on: ubuntu-latest
+
+# ------------------- Job 2: Docker Build and Push to Artifact Registry -------------------------
+  docker-build-push:
+        name: Docker Build and Push to Artifact Registry
+        runs-on: ubuntu-latest
+        needs: build-test
+#------------------- Job 3: Deploy to Dev (Automatic)  -------------------------
+    deploy-dev:
+#------------------- Job 4: Deploy to Stage (Automatic)  -------------------------
+    deploy-staging:
+#------------------- Job 5: Deploy to Prod  (Manually, Required Approval)  -------------------------
+    deploy-production:
+#------------------- Job 6: Summary Job , Always runs  -------------------------
+    summary:    
