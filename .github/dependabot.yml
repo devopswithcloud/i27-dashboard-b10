@@ -1,0 +1,64 @@
+# .github/dependabot.yml
+#
+# ════════════════════════════════════════════════════════════
+# Dependabot automatically opens PRs when:
+#   → A dependency has a newer version available
+#   → A dependency has a known security vulnerability (CVE)
+#   → A GitHub Actions version is outdated
+#
+# Place this file at: .github/dependabot.yml
+# ════════════════════════════════════════════════════════════
+
+version: 2
+updates:
+
+  # ── Maven dependencies (pom.xml) ───────────────────────────
+  - package-ecosystem: maven
+    directory: /                    # root of the repo
+    schedule:
+      interval: weekly
+      day: monday
+      time: "08:00"
+      timezone: "Asia/Kolkata"
+    open-pull-requests-limit: 5     # max 5 open PRs at once
+    labels:
+      - dependencies
+      - java
+    reviewers:
+      - devopswithcloud             # auto-assign reviewer
+    commit-message:
+      prefix: "chore(deps)"        # conventional commits format
+
+  # ── GitHub Actions versions ─────────────────────────────────
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "08:00"
+      timezone: "Asia/Kolkata"
+    labels:
+      - dependencies
+      - github-actions
+    commit-message:
+      prefix: "chore(actions)"
+
+# ════════════════════════════════════════════════════════════
+# Real-world scenario:
+#
+# Without Dependabot:
+#   pom.xml → spring-boot 3.4.0 (CVE discovered 3 months later)
+#   Nobody notices → app running with vulnerable dependency
+#
+# With Dependabot:
+#   Dependabot scans weekly
+#   Finds spring-boot 3.4.2 with security fix
+#   Opens PR: "Bump spring-boot from 3.4.0 to 3.4.2"
+#   Your CI runs → tests pass → you review → merge
+#   Vulnerability fixed ✅
+#
+# For GitHub Actions:
+#   workflow uses: actions/checkout@v3
+#   Dependabot opens PR: "Bump actions/checkout from v3 to v4"
+#   v4 has security patches → merge it ✅
+# ════════════════════════════════════════════════════════════

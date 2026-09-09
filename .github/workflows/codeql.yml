@@ -1,0 +1,70 @@
+name: CodeQL-Security-Scan
+
+# ════════════════════════════════════════════════════════════
+# CodeQL automatically scans your code for:
+#   → SQL injection vulnerabilities
+#   → Cross-site scripting (XSS)
+#   → Insecure deserialization
+#   → Path traversal
+#   → Hard-coded credentials
+#   → And many more Java-specific vulnerabilities
+#
+# Results appear in:
+#   Repo → Security → Code scanning alerts
+# ════════════════════════════════════════════════════════════
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 6 * * 1'    # every Monday at 6am UTC
+
+jobs:
+  codeql-analysis:
+    name: CodeQL Security Analysis
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write    # needed to upload scan results
+      contents: read
+      actions: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: java       # scan Java code
+          # Other options: python, javascript, go, ruby, swift
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: temurin
+          cache: maven
+
+      - name: Build for CodeQL
+        run: mvn compile -DskipTests
+        # CodeQL needs the code to compile to analyze it
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:java"
+
+# ════════════════════════════════════════════════════════════
+# After running:
+#   Repo → Security tab → Code scanning alerts
+#   Each alert shows:
+#     → What the vulnerability is
+#     → Which file and line number
+#     → How severe (critical, high, medium, low)
+#     → How to fix it
+#
+# CodeQL is FREE for public repos
+# For private repos — requires GitHub Advanced Security
+# ════════════════════════════════════════════════════════════
