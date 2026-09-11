@@ -2,3 +2,5 @@
 * Added some code here in readme 
 
 # some commitfd
+
+* Implemented some java depenedencies fixes
