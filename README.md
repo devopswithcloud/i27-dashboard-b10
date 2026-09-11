@@ -4,3 +4,4 @@
 # some commitfd
 
 * Implemented some java depenedencies fixes
+* new fix 
