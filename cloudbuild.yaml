@@ -1,8 +1,15 @@
+#   GCP Setup:
+#     Artifact Registry repo created:
+#       gcloud artifacts repositories create i27academy-devops-dashboard \
+#         --repository-format=docker \
+#         --location=us-central1 \
+#         --project=project-297df0e3-3d6b-40a7-aab
+
 substitutions:
   _REGION: us-central1
-  _REPO: gcp-batch28
-  _IMAGE: i27-dashboard-b10
-  _SERVICE: i27-dashboard-b10
+  _REPO: i27academy-devops-dashboard
+  _IMAGE: i27academy-devops-dashboard
+  _SERVICE: i27academy-devops-dashboard
   _PROJECT_ID: 'project-297df0e3-3d6b-40a7-aab'  # Replace with your actual GCP project ID
 
 images:
