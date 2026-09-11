@@ -34,6 +34,9 @@ steps:
       - '--platform=managed'
       - '--port=8000'
       - '--allow-unauthenticated'
+      - '--set-env-vars=SERVER_PORT=8000,SPRING_PROFILES_ACTIVE=cloudrun'
+
+
 
 options:
   logging: CLOUD_LOGGING_ONLY
